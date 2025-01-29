@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>🌟 Sıla Göktaş Premium Experience 🌟</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Patua+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e55039;
+            --secondary-color: #4a69bd;
+            --accent-color: #f6b93b;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(45deg, #ffffff, #f8c291);
+            color: #2d3436;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Patua One', cursive;
+            text-shadow: 2px 2px rgba(0,0,0,0.1);
+        }
+
+        /* ... Tüm Önceki Animasyon ve Layout Kodları ... */
+
+        /* Yeni Ekstra Özellikler */
+        .achievement-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 10px;
+            transform: rotate(-3deg);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        .interactive-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .secret-code-input {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- ... Önceki HTML İçerikleri ... -->
+
+    <!-- Yeni Eklenen Bölümler -->
+    <div class="container">
+        <!-- Başarımlar Bölümü -->
+        <div class="interactive-card" onclick="revealAchievement()">
+            <h2>🏆 Sıla'nın Başarımları</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="achievementProgress"></div>
+            </div>
+            <div id="achievementContainer"></div>
+        </div>
+
+        <!-- Zaman Çizelgesi -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>📅 199X</h3>
+                <p>Mini Göktaş'ın doğuşu!</p>
+            </div>
+            <div class="timeline-item">
+                <h3>🚀 2023</h3>
+                <p>158cm ile Guinness Rekorlar Kitabı'na aday gösterilme</p>
+            </div>
+        </div>
+
+        <!-- Gizli Kod Girişi -->
+        <input type="text" class="secret-code-input" placeholder="🔑 Gizli Kod" id="secretCode">
+    </div>
+
+    <!-- Galeri -->
+    <div class="gallery-grid">
+        <img src="placeholder1.jpg" class="gallery-item" alt="Sıla 1">
+        <img src="placeholder2.jpg" class="gallery-item" alt="Sıla 2">
+        <img src="placeholder3.jpg" class="gallery-item" alt="Sıla 3">
+    </div>
+
+    <script>
+        // ... Önceki Tüm JavaScript Kodları ...
+
+        // Yeni Özellik: Başarım Sistemi
+        const achievements = [
+            "🍌 10 Muz Toplama Uzmanı",
+            "🌟 İlk Göktaş Keşfi",
+            "🏆 Mini Boy Şampiyonu"
+        ];
+        let currentAchievement = 0;
+
+        function revealAchievement() {
+            if(currentAchievement < achievements.length) {
+                const badge = document.createElement('div');
+                badge.className = 'achievement-badge';
+                badge.textContent = achievements[currentAchievement];
+                document.getElementById('achievementContainer').appendChild(badge);
+                
+                document.getElementById('achievementProgress').style.width = 
+                    `${(currentAchievement + 1) * 33}%`;
+                
+                currentAchievement++;
+            }
+        }
+
+        // Yeni Özellik: Gizli Kod Sistemi
+        document.getElementById('secretCode').addEventListener('input', (e) => {
+            if(e.target.value.toLowerCase() === "goktas158") {
+                document.body.style.background = "linear-gradient(45deg, #1e3799, #78e08f)";
+                alert("🚀 Uzay Modu Aktif!");
+            }
+        });
+
+        // Yeni Özellik: Galeri için Resim Yükleme
+        // Not: placeholder.jpg yerine gerçek resim URL'leri eklemelisin
+    </script>
+</body>
+</html>
